@@ -30,15 +30,15 @@ public class HelloApplication extends Application {
     }
 
     private Parent Structure() throws FileNotFoundException {
-        var field = new CheckGuess(input -> input.matches("Pepsi") || input.matches("pepsi"));
-        field.setText("Enter Guess");
-        field.setFocusTraversable(false);
-        field.setAlignment(Pos.CENTER);
-        field.setMaxWidth(100.0);
-        field.setMaxHeight(35.0);
+        var textbox = new CheckGuess(input -> input.matches("Pepsi") || input.matches("pepsi"));
+        textbox.setText("Enter Guess");
+        textbox.setFocusTraversable(false);
+        textbox.setAlignment(Pos.CENTER);
+        textbox.setMaxWidth(100.0);
+        textbox.setMaxHeight(35.0);
         //
         var button = new Button("Next Level ->");
-        button.disableProperty().bind(field.isCorrect.not());
+        button.disableProperty().bind(textbox.isCorrect.not());
         Label title = new Label("Level 1");
         title.setFont(new Font("Times New Roman", 25.0));
         //Logo
@@ -46,13 +46,13 @@ public class HelloApplication extends Application {
         ImageView imageView = new ImageView(logo1);
         //Button
         StackPane.setAlignment(title, Pos.TOP_CENTER);
-        StackPane.setAlignment(field, Pos.BOTTOM_CENTER);
+        StackPane.setAlignment(textbox, Pos.BOTTOM_CENTER);
         StackPane.setAlignment(button, Pos.BOTTOM_RIGHT);
         StackPane.setMargin(title,new Insets(10));
-        StackPane.setMargin(field,new Insets(15));
+        StackPane.setMargin(textbox,new Insets(15));
         StackPane.setMargin(button,new Insets(15));
         StackPane.setMargin(imageView,new Insets(75,75,75,75));
-        return new StackPane(field,title,imageView,button);
+        return new StackPane(textbox,title,imageView,button);
     }
 
     private static class CheckGuess extends TextField {
